@@ -20,5 +20,14 @@
         <a href="/orders">Orders</a>
       </li>
     </ul>
+
+    <div class="search-feild">
+      <%= form_tag('/search?zip=', method: :get) do %>
+      <div>
+        <%= text_field_tag :query, "find a store", class: "search" %>
+        <%= submit_tag "Search", class: "btn btn-search" %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </nav>
