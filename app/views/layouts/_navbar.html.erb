@@ -21,13 +21,10 @@
       </li>
     </ul>
 
-    <div class="search-feild">
-      <%= form_tag('/search?zip=', method: :get) do %>
-      <div>
-        <%= text_field_tag :query, "find a store", class: "search" %>
-        <%= submit_tag "Search", class: "btn btn-search" %>
-      </div>
-      <% end %>
+    <%= form_tag('/search?zip=', method: :get) do %>
+      <%= text_field_tag :zip, placeholder="find a store", class: "search" %>
+      <%= submit_tag "Search", class: "btn-search" %>
+    <% end %>
     </div>
   </div>
 </nav>

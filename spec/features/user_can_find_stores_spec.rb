@@ -6,8 +6,10 @@ RSpec.describe "a user can search for a store" do
       visit '/'
       save_and_open_page
 
-      fill_in "find a store", with: "80202"
-      click_on ".btn-search"
+      within(".navbar") do
+        fill_in "zip", with: "80202"
+        click_on "Search"
+      end
 
       expect(current_path).to eq "/search"
 
