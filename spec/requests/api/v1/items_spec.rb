@@ -44,6 +44,21 @@ RSpec.describe "Items API" do
     expect(response.status).to eq 204
     expect(Item.count).to eq 0
   end
+
+  it "can create an item" do
+    item = {
+      name: "a thing",
+      description: "this thing is the thingyiest",
+      image_url: "another_image.com/images"
+    }
+
+    expect(Item.count).to eq 0
+    post "/api/v1/items", params: {item: item}
+
+    expect(response).to be_success
+    expect(Item.count).to eq 1
+    expect(response.status).to eq 204
+  end
 end
 # ```### 1. Create an API
 #
