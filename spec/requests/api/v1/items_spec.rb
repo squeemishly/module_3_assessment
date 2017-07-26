@@ -6,7 +6,32 @@ RSpec.describe "Items API" do
 
     get '/api/v1/items'
 
+    items = JSON.parse(response.body)
+
     expect(response).to be_success
+    expect(items.count).to eq 5
+    expect(items.first["id"]).to be_a Integer
+    expect(items.first["name"]).to be_a String
+    expect(items.first["description"]).to be_a String
+    expect(items.first["image_url"]).to be_a String
+    expect(items.first["created_at"]).to be nil
+    expect(items.first["updated_at"]).to be nil
+  end
+
+  it "can send an items" do
+    item = create(:item)
+
+    get "/api/v1/items/#{item.id}"
+
+    info = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(info["id"]).to be item.id
+    expect(info["name"]).to be_a item.name
+    expect(info["description"]).to be_a item.description
+    expect(info["image_url"]).to be_a item.image_url
+    expect(info["created_at"]).to be nil
+    expect(info["updated_at"]).to be nil
   end
 end
 # ```### 1. Create an API
