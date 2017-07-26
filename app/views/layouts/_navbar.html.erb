@@ -22,7 +22,7 @@
     </ul>
 
     <%= form_tag('/search?zip=', method: :get) do %>
-      <%= text_field_tag :zip, placeholder="find a store", class: "search" %>
+      <%= text_field_tag :zip, placeholder="find a store" %>
       <%= submit_tag "Search", class: "btn-search" %>
     <% end %>
     </div>

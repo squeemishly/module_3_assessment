@@ -6,16 +6,16 @@ RSpec.describe "a user can search for a store" do
       VCR.use_cassette("user_finds_stores_by_zip") do
         visit '/'
 
-        within(".navbar") do
-          fill_in "zip", with: "80202"
+        # within(".navbar") do
+          fill_in :zip, with: "80202"
           click_on "Search"
-        end
+        # end
 
         expect(current_path).to eq "/search"
 
         expect(page).to have_content "17 Total Stores"
 
-        within(".store-info") do
+        within first(".store-info") do
           expect(page).to have_selector(".long-name")
           expect(page).to have_selector(".city")
           expect(page).to have_selector(".distance")

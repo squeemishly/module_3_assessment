@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 26 Jul 2017 17:01:01 GMT
+      - Wed, 26 Jul 2017 17:23:06 GMT
       Server:
       - Best Buy Public APIs
       X-Cache-Hit:
@@ -53,5 +53,5 @@ http_interactions:
         Box"},{"city":"Centennial","longName":"BEST BUY - SOUTHGLENN","distance":11.02,"phone":"303-797-3246","storeType":"Big
         Box"}],"warnings":"Distances are in terms of miles (default)"}'
     http_version: 
-  recorded_at: Wed, 26 Jul 2017 16:59:38 GMT
+  recorded_at: Wed, 26 Jul 2017 17:22:20 GMT
 recorded_with: VCR 3.0.3
