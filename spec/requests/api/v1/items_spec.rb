@@ -58,6 +58,15 @@ RSpec.describe "Items API" do
     expect(response).to be_success
     expect(Item.count).to eq 1
     expect(response.status).to eq 201
+
+    info = JSON.parse(response.body)
+
+    expect(info["item"]["id"]).to be_a Integer
+    expect(info["item"]["name"]).to eq item[:name]
+    expect(info["item"]["description"]).to eq item[:description]
+    expect(info["item"]["image_url"]).to eq item[:image_url]
+    expect(info["item"]["created_at"]).to be nil
+    expect(info["item"]["updated_at"]).to be nil
   end
 end
 #
