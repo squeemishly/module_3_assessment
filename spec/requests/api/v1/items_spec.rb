@@ -18,7 +18,7 @@ RSpec.describe "Items API" do
     expect(items.first["updated_at"]).to be nil
   end
 
-  it "can send an items" do
+  it "can send an item" do
     item = create(:item)
 
     get "/api/v1/items/#{item.id}"
@@ -33,22 +33,23 @@ RSpec.describe "Items API" do
     expect(info["created_at"]).to be nil
     expect(info["updated_at"]).to be nil
   end
+
+  it "can delete an item" do
+    item = create(:item)
+    expect(Item.count).to eq 1
+
+    delete "/api/v1/items/#{item.id}"
+
+    expect(response).to be_success
+    expect(response.status).to eq 204
+    expect(Item.count).to eq 0
+  end
 end
 # ```### 1. Create an API
 #
 # For this challenge clone [Storedom](https://github.com/turingschool-examples/storedom).
 #
 # We need an API for the application that can both read and write data. Start by focusing on functionality for items. All of this should happen in a dedicated, versioned controller.
-#
-# When I send a GET request to `/api/v1/items`
-# I receive a 200 JSON response containing all items
-# And each item has an id, name, description, and image_url but not the created_at or updated_at
-#
-# When I send a GET request to `/api/v1/items/1`
-# I receive a 200 JSON response containing the id, name, description, and image_url but not the created_at or updated_at
-#
-# When I send a DELETE request to `/api/v1/items/1`
-# I receive a 204 JSON response if the record is successfully deleted
 #
 # When I send a POST request to `/api/v1/items` with a name, description, and image_url
 # I receive a 201 JSON  response if the record is successfully created
