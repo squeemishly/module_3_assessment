@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'shoulda-matchers'
 require 'vcr'
+require 'support/factory_girl'
 
 VCR.configure do |config|
   config.cassette_library_dir = "fixtures/vcr_cassettes"
@@ -68,5 +69,5 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  config.filter_gems_from_backtrace("factory_girl-4.8.0", "rack-test-0.6.3", "railties-4.1.4", "rack-1.5.5")
 end
