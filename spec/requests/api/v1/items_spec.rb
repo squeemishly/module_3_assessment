@@ -53,18 +53,13 @@ RSpec.describe "Items API" do
     }
 
     expect(Item.count).to eq 0
-    post "/api/v1/items", params: {item: item}
+    post "/api/v1/items", {item: item}
 
     expect(response).to be_success
     expect(Item.count).to eq 1
-    expect(response.status).to eq 204
+    expect(response.status).to eq 201
   end
 end
-# ```### 1. Create an API
-#
-# For this challenge clone [Storedom](https://github.com/turingschool-examples/storedom).
-#
-# We need an API for the application that can both read and write data. Start by focusing on functionality for items. All of this should happen in a dedicated, versioned controller.
 #
 # When I send a POST request to `/api/v1/items` with a name, description, and image_url
 # I receive a 201 JSON  response if the record is successfully created
