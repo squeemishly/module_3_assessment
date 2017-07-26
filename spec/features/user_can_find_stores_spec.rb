@@ -3,24 +3,25 @@ require 'rails_helper'
 RSpec.describe "a user can search for a store" do
   context "from the search box" do
     it "when they fill in the zipcode" do
-      visit '/'
-      save_and_open_page
+      VCR.use_cassette("user_finds_stores_by_zip") do
+        visit '/'
 
-      within(".navbar") do
-        fill_in "zip", with: "80202"
-        click_on "Search"
-      end
+        within(".navbar") do
+          fill_in "zip", with: "80202"
+          click_on "Search"
+        end
 
-      expect(current_path).to eq "/search"
+        expect(current_path).to eq "/search"
 
-      expect(page).to have_content "17 Total Stores"
+        expect(page).to have_content "17 Total Stores"
 
-      within(".store-info") do
-        expect(page).to have_selector(".long-name")
-        expect(page).to have_selector(".city")
-        expect(page).to have_selector(".distance")
-        expect(page).to have_selector(".phone-number")
-        expect(page).to have_selector(".store-type")
+        within(".store-info") do
+          expect(page).to have_selector(".long-name")
+          expect(page).to have_selector(".city")
+          expect(page).to have_selector(".distance")
+          expect(page).to have_selector(".phone-number")
+          expect(page).to have_selector(".store-type")
+        end
       end
     end
   end
