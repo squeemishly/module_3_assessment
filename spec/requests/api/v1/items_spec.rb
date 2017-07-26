@@ -26,10 +26,10 @@ RSpec.describe "Items API" do
     info = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(info["id"]).to be item.id
-    expect(info["name"]).to be_a item.name
-    expect(info["description"]).to be_a item.description
-    expect(info["image_url"]).to be_a item.image_url
+    expect(info["id"]).to eq item.id
+    expect(info["name"]).to eq item.name
+    expect(info["description"]).to eq item.description
+    expect(info["image_url"]).to eq item.image_url
     expect(info["created_at"]).to be nil
     expect(info["updated_at"]).to be nil
   end
